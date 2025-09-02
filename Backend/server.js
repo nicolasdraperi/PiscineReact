@@ -20,9 +20,11 @@ app.get("/", (req, res) => {
 // Import routes
 const photoRoutes = require("./src/routes/photoRoutes");
 const userRoutes = require("./src/routes/userRoutes");
+const authRoutes = require("./src/routes/authRoutes");
 
 app.use("/api/photos", photoRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/auth", authRoutes);
 
 // Lancer le serveur
 const PORT = process.env.PORT || 5000;

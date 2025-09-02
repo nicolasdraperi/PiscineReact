@@ -1,23 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
+const authMiddleware = require("../middleware/authMiddleware");
 
-//creer un utilisateur
-router.post("/", async (req, res) => {
+router.get("/me", authMiddleware, async (req, res) => {
   try {
-    const newUser = new User(req.body);
-    const saved = await newUser.save();
-    res.json(saved);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-//recuperer tous les utilisateurs
-router.get("/", async (req, res) => {
-  try {
-    const users = await User.find();
-    res.json(users);
+    const user = await User.findById(req.user.id).select("-password"); // enlever le mot de passe
+    res.json(user);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
