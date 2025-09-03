@@ -25,6 +25,7 @@ const authRoutes = require("./src/routes/authRoutes");
 app.use("/api/photos", photoRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/uploads", express.static("uploads"));
 
 // Lancer le serveur
 const PORT = process.env.PORT || 5000;
