@@ -152,6 +152,7 @@ Le thème est centralisé dans `src/utils/theme.js` avec une palette rouge moder
 ## 👥 Équipe
 
 - **Frontend** : Hugo (cette branche)
+- **Frontend** : Nail (branche séparée) 
 - **Backend** : Nicolas (branche séparée)
 
 ## 📄 Licence
