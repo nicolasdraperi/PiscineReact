@@ -2,6 +2,9 @@
 
 # dependencies
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Expo
 .expo/
@@ -32,6 +35,33 @@ yarn-error.*
 
 # local env files
 .env*.local
+.env
 
 # typescript
 *.tsbuildinfo
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+*.log
+
+# App specific
+uploads/
+*.orig
+
+# Cache
+.cache/
+.parcel-cache/
+
+# Temporary files
+*.tmp
+*.temp
+
+# React Native
+android/
+ios/

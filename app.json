@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ProjetPiscineReactNative",
-    "slug": "ProjetPiscineReactNative",
+    "name": "Memorize",
+    "slug": "memorize",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
