@@ -151,6 +151,13 @@ export const Config = {
   // ...
 };
 ```
+### .env exemple
+Ajouter `.env` dans le backend :
+```javascript
+PORT=5000
+MONGO_URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/journal_voyage
+JWT_SECRET=<le token de votre choix>
+```
 
 ### Thème
 Le thème est centralisé dans `src/utils/theme.js` avec une palette rouge moderne cohérente.
