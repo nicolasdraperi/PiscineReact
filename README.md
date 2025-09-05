@@ -55,6 +55,23 @@ Une application mobile React Native Expo pour créer un journal de voyage avec p
 - Expo CLI
 - Un émulateur Android/iOS ou l'app Expo Go
 
+### Installation Backend
+```bash
+# Cloner le projet
+git clone https://github.com/nicolasdraperi/PiscineReact.git
+cd PiscineReact
+
+# Basculer sur la branche Nicolas (Backend)
+git checkout Nicolas
+cd Backend
+
+# Installer les dépendances
+npm install
+
+# Lancer l'application
+npm start
+```
+
 ### Installation Frontend
 ```bash
 # Cloner le projet
