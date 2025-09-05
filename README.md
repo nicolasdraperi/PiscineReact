@@ -1,21 +1,91 @@
-Journal de Voyage - Backend
+# 📸 Memorize - Journal de Voyage Interactif
 
-Backend pour l’application Journal de Voyage interactif (React Native).
-Ce backend permet la gestion des utilisateurs, de l’authentification et des photos (avec upload d’images).
+Une application mobile React Native Expo pour créer un journal de voyage avec photos géolocalisées.
 
-Fonctionnalités
+## 🌟 Fonctionnalités
 
-Authentification avec JWT (register / login)
+### 📱 Core Features
+- **📸 Prise de photos** avec géolocalisation automatique
+- **🗺️ Carte interactive** des photos avec localisation
+- **📅 Calendrier** avec marquage des jours avec photos
+- **🖼️ Galerie photos** avec filtres par date et lieu
+- **👤 Profil utilisateur** avec statistiques personnalisées
 
-Ajout et récupération des photos avec gestion de l’upload (Multer)
+### 🔐 Authentification
+- **Connexion/Inscription** avec backend sécurisé
+- **Mode hybride** : Backend + stockage local de fallback
+- **Isolation des données** par utilisateur
+- **Synchronisation automatique** des photos
 
-Chaque photo est reliée à un utilisateur
+### ✨ Fonctionnalités Uniques
+- **🌤️ Widget météo** contextuel pour chaque photo
+- **😊 Tracker d'humeur** pour associer des émotions aux photos
+- **🎵 Timeline de voyage** chronologique interactive
+- **🎤 Recherche vocale** dans la galerie
+- **📊 Statistiques avancées** (jours actifs, lieux visités, etc.)
 
-Un utilisateur ne peut voir que ses propres photos
+## 🎨 Design
 
-Endpoints pour récupérer les infos de profil + toutes ses photos + sa dernière photo
+- **Thème rouge moderne** cohérent
+- **Interface intuitive** avec navigation par onglets
+- **Composants personnalisés** pour une expérience unique
+- **Responsive design** optimisé mobile
 
-Structure du projet
+## 🛠️ Technologies
+
+### Frontend (Cette branche)
+- **React Native** avec Expo
+- **React Navigation** (Tabs + Stack)
+- **Expo Camera** pour la prise de photos
+- **Expo Location** pour la géolocalisation
+- **AsyncStorage** pour le stockage local
+- **Axios** pour les appels API
+
+### Backend (Branche séparée)
+- **Node.js** avec Express
+- **MongoDB** avec Mongoose
+- **JWT** pour l'authentification
+- **Multer** pour l'upload de fichiers
+- **API REST** complète
+
+## 📦 Installation
+
+### Prérequis
+- Node.js (v16+)
+- Expo CLI
+- Un émulateur Android/iOS ou l'app Expo Go
+
+### Installation Backend
+```bash
+# Cloner le projet
+git clone https://github.com/nicolasdraperi/PiscineReact.git
+cd PiscineReact
+
+# Basculer sur la branche Hugo (Frontend)
+git checkout Nicolas
+
+# Installer les dépendances
+npm install
+
+# Lancer l'application
+npm start
+```
+
+### Configuration Backend
+1. Lancer le backend sur le port 5000
+2. Le backend doit avoir le dossier `uploads/` créé
+
+## 🚀 Utilisation
+
+1. **Lancer l'app** avec `npm start`
+2. **Créer un compte** ou se connecter
+3. **Prendre des photos** avec géolocalisation
+4. **Explorer** la carte, le calendrier et la galerie
+5. **Consulter** les statistiques dans le profil
+
+## 📁 Structure du Projet
+
+```
 backend/
 │── server.js             # Point d’entrée
 │── .env                  # Variables d’environnement
@@ -24,86 +94,50 @@ backend/
 │   ├── models/           # Schémas Mongoose (User, Photo)
 │   ├── routes/           # Routes Express (auth, users, photos)
 │   └── middleware/       # Middleware (authMiddleware.js)
+```
 
-Installation
-1. Cloner le projet
-git clone <repo-url>
-cd backend
+## 🔧 Configuration
 
-2. Installer les dépendances
-npm install
-
-3. Configurer les variables d’environnement
-
-Créer un fichier .env à la racine avec :
-
+### .env exemple
+Ajouter `.env` dans le backend :
+```javascript
 PORT=5000
 MONGO_URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/journal_voyage
-JWT_SECRET=tonSuperSecret123
+JWT_SECRET=<le token de votre choix>
+```
 
-4. Créer le dossier pour les uploads
-mkdir uploads
+## 👥 Équipe
 
-5. Lancer le serveur
-npm run dev
+- **Frontend** : Hugo (cette branche)
+- **Frontend** : Nail (branche séparée) 
+- **Backend** : Nicolas (branche séparée)
 
+## 📄 Licence
 
-Par défaut le backend tourne sur :
-http://localhost:5000
+Projet étudiant - École Piscine React Native
 
-Routes disponibles
-Auth
+---
 
-POST /api/auth/register → inscription utilisateur
+## 🎯 Fonctionnalités Techniques Avancées
 
-{
-  "name": "Alice",
-  "email": "alice@example.com",
-  "password": "monmotdepasse"
-}
+### 💾 Gestion des Données
+- **Cache intelligent** pour éviter les appels API redondants
+- **Déduplication automatique** des photos
+- **Synchronisation hybride** backend/local
+- **Protection contre les clics multiples**
 
+### 🔒 Sécurité
+- **Isolation des données** par utilisateur
+- **Tokens JWT** sécurisés
+- **Validation des formulaires**
+- **Gestion des erreurs** robuste
 
-POST /api/auth/login → connexion (renvoie un JWT)
+### ⚡ Performance
+- **Optimisation caméra** (qualité réduite, skipProcessing)
+- **Géolocalisation en arrière-plan**
+- **Cache photos** avec invalidation intelligente
+- **Refresh automatique** des écrans
 
-{
-  "email": "alice@example.com",
-  "password": "monmotdepasse"
-}
+---
 
-Utilisateur
-
-GET /api/users/me → infos utilisateur connecté + ses photos + dernière photo
-Headers :
-
-Authorization: Bearer <token>
-
-Photos
-
-POST /api/photos → ajouter une photo (protégé)
-Type : form-data
-| KEY | TYPE | VALUE |
-|----------|------|-------|
-| photo | File | image.jpg |
-| location | Text | {"latitude":48.85,"longitude":2.35} |
-| date | Text | 2025-09-05T10:30:00Z |
-
-Headers :
-
-Authorization: Bearer <token>
-
-
-GET /api/photos → récupérer les photos de l’utilisateur connecté
-
-Technologies utilisées
-
-Node.js + Express
-
-MongoDB + Mongoose
-
-JWT (authentification)
-
-Multer (upload d’images)
-
-Dotenv (variables d’environnement)
-
-Cors (API accessible par le frontend)
+*Application développée dans le cadre de la Piscine React Native 2025*
