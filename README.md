@@ -61,8 +61,9 @@ Une application mobile React Native Expo pour créer un journal de voyage avec p
 git clone https://github.com/nicolasdraperi/PiscineReact.git
 cd PiscineReact
 
-# Basculer sur la branche Hugo (Frontend)
+# Basculer sur la branche Nicolas (Backend)
 git checkout Nicolas
+cd Backend
 
 # Installer les dépendances
 npm install
